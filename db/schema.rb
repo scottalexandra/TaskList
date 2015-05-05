@@ -23,19 +23,19 @@ ActiveRecord::Schema.define(version: 20150505193229) do
     t.datetime "updated_at",                 null: false
   end
 
-  create_table "tag_tasks", id: false, force: :cascade do |t|
-    t.integer "tag_id"
-    t.integer "task_id"
-  end
-
-  add_index "tag_tasks", ["tag_id"], name: "index_tag_tasks_on_tag_id", using: :btree
-  add_index "tag_tasks", ["task_id"], name: "index_tag_tasks_on_task_id", using: :btree
-
   create_table "tags", force: :cascade do |t|
     t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "tags_tasks", id: false, force: :cascade do |t|
+    t.integer "tag_id"
+    t.integer "task_id"
+  end
+
+  add_index "tags_tasks", ["tag_id"], name: "index_tags_tasks_on_tag_id", using: :btree
+  add_index "tags_tasks", ["task_id"], name: "index_tags_tasks_on_task_id", using: :btree
 
   create_table "tasks", force: :cascade do |t|
     t.string   "title"
