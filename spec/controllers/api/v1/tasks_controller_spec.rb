@@ -12,7 +12,7 @@ RSpec.describe Api::V1::TasksController, type: :controller do
     it "can get an list of tasks" do
       get :index, id: list.id
 
-      tasks = JSON.parse(response.body)
+      tasks = JSON.parse(response.body)["tasks"]
 
       expect(response).to have_http_status(:success)
       expect(tasks.first["title"]).to eq("clean the kitchen")
@@ -24,7 +24,7 @@ RSpec.describe Api::V1::TasksController, type: :controller do
     it "can get a specific task" do
       get :show, id: task1.id
 
-      task = JSON.parse(response.body)
+      task = JSON.parse(response.body)["task"]
 
       expect(response).to have_http_status(:success)
       expect(task["title"]).to eq("clean the kitchen")
@@ -45,7 +45,7 @@ RSpec.describe Api::V1::TasksController, type: :controller do
       put :update, id: task1.id, task: { title: "I don't want to clean the kitchen" }
       get :show, id: task1.id
 
-      task = JSON.parse(response.body)
+      task = JSON.parse(response.body)["task"]
 
       expect(response).to have_http_status(:success)
       expect(task["title"]).to eq("I don't want to clean the kitchen")

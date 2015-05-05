@@ -1,9 +1,11 @@
 class Api::V1::ListsController < ApplicationController
   def index
-    render json: List.all
+    @lists = List.all
+    render json: @lists
   end
   def show
-    render json: List.find(params[:id])
+    @list = List.find(params[:id])
+    render json: @list
   end
 
   def create

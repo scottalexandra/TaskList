@@ -8,8 +8,7 @@ RSpec.describe Api::V1::ListsController, type: :controller do
       create(:list)
       get :index
 
-      lists = JSON.parse(response.body)
-
+      lists = JSON.parse(response.body)["lists"]
       expect(response).to have_http_status(:success)
       expect(lists.first["title"]).to eq("My First List")
     end
@@ -18,7 +17,7 @@ RSpec.describe Api::V1::ListsController, type: :controller do
   describe "get show" do
     it "returns a specific list" do
       get :show, id: list.id
-      list = JSON.parse(response.body)
+      list = JSON.parse(response.body)["list"]
 
       expect(response).to have_http_status(:success)
       expect(list["title"]).to eq("My First List")
@@ -41,7 +40,7 @@ RSpec.describe Api::V1::ListsController, type: :controller do
       put :update, id: list.id, list: { title: "My Revised First List" }
       get :show, id: list.id
 
-      list = JSON.parse(response.body)
+      list = JSON.parse(response.body)["list"]
       expect(response).to have_http_status(:success)
       expect(list["title"]).to eq("My Revised First List")
     end
@@ -50,7 +49,7 @@ RSpec.describe Api::V1::ListsController, type: :controller do
   describe "delete destroy" do
     it "can delete a list" do
       post :create, list: { title: "My second list", archived: false }
-      new_list = JSON.parse(response.body)
+      new_list = JSON.parse(response.body)["list"]
       delete :destroy, id: new_list["id"]
 
       expect(response).to have_http_status(:success)
