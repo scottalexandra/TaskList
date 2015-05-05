@@ -1,10 +1,22 @@
 require 'rails_helper'
 
-RSpec.describe Api::V1::ListController, type: :controller do
+RSpec.describe Api::V1::ListsController, type: :controller do
   let(:list) { create(:list) }
 
+  describe "get index" do
+    it "returns a list of lists" do
+      create(:list)
+      get :index
+
+      lists = JSON.parse(response.body)
+
+      expect(response).to have_http_status(:success)
+      expect(lists.first["title"]).to eq("My First List")
+    end
+  end
+
   describe "get show" do
-    it "it returns a specific list" do
+    it "returns a specific list" do
       get :show, id: list.id
       list = JSON.parse(response.body)
 
