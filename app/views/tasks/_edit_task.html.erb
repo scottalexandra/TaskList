@@ -1,0 +1,8 @@
+<div class="edit_task_form">
+ <%= form_for :task, url: task_path(@task.id), method: :put do |f| %>
+  <%= f.label :complete %>
+  <%= f.check_box :status, {},"complete", "incomplete" %>
+  <%= f.hidden_field :list_id, value: @list_id %>
+  <%= f.submit "Submit" %>
+ <% end %>
+</div>
