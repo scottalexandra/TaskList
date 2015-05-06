@@ -1,6 +1,6 @@
 class ListsController < ApplicationController
   def index
-    @lists = List.unarchived
+    @lists = List.all
   end
 
   def show
@@ -23,10 +23,19 @@ class ListsController < ApplicationController
     end
   end
 
+  def edit
+    @list = List.find(params[:id])
+  end
+
+  def update
+    List.update(params[:id], list_params)
+    flash[:notice] = "List Successfully Updated"
+    redirect_to lists_path
+  end
 
   private
 
   def list_params
-    params.require(:list).permit(:title)
+    params.require(:list).permit(:title, :archived)
   end
 end

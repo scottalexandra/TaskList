@@ -1,0 +1,9 @@
+<div class="edit_list_form">
+ <%= form_for :list, url: list_path(@list.id), method: :put do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.label :archived %>
+  <%= f.check_box :archived, {}, true, false %>
+  <%= f.submit "Submit" %>
+ <% end %>
+</div>
