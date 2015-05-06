@@ -9,8 +9,8 @@ $(document).ready(function(){
     $(buttonID).on("click", function(){
       $(divID2).addClass("hidden");
       $(divID).removeClass("hidden");
-      $(buttonID).addClass("colorize");
-      $(buttonID2).removeClass("colorize");
+      $(buttonID).addClass("hidden");
+      $(buttonID2).removeClass("hidden");
     });
   }
 })

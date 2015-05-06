@@ -17,7 +17,7 @@ class Seed
   def build_complete_tasks
     i = 21
     10.times do
-      Task.create(title: "task #{i}", status: "complete", due: "5/5/15")
+      Task.create(title: "task #{i}", completed: true, due: "5/5/15")
       i = i + 1
     end
   end
@@ -36,7 +36,7 @@ class Seed
     i = 11
     10.times do
       list = List.create(title: "list #{i}", archived: true)
-      task = Task.create(title: "task #{i}", status: "complete", due: "5/5/15")
+      task = Task.create(title: "task #{i}", completed: true, due: "5/5/15")
       list.tasks << task
       i = i + 1
     end

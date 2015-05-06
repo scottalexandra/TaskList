@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature "Tasks", type: :feature do
   let!(:list) { create(:list) }
   let!(:task1) { create(:task) }
-  let!(:task2) { create(:task, title: "go bike riding", status: "complete") }
+  let!(:task2) { create(:task, title: "go bike riding", completed: true) }
 
   before(:each) do
     list.tasks << [task1, task2]
@@ -62,13 +62,12 @@ RSpec.feature "Tasks", type: :feature do
     task3 = create(:task)
     visit list_path(list.id)
     within(".incomplete-tasks") do
-      save_and_open_page
       within(".clean") do
         click_link_or_button "Mark Complete"
       end
     end
     within(".edit_task_form") do
-      find(:css, "#task_status[value='complete']").set(true)
+      find(:css, "#task_completed[value='true']").set(true)
       click_link_or_button "Submit"
     end
 
