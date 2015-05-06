@@ -8,7 +8,7 @@
   <div class=<%= task.title %>>
     <%= task.title %>
     <%= task.due %>
-    <%= link_to "Mark Complete", task_path(task.id), method: :put %>
+    <%= link_to "Mark Complete", edit_task_path(task.id, list_id: @list.id), id: "change-status" %>
     <%= link_to "remove", task_path(task.id, list_id: @list.id), method: :delete, remote: true %>
   </div>
   <% end %>
@@ -18,5 +18,6 @@
   <% @list.tasks.complete.each do |task| %>
     <%= task.title %>
     <%= task.due %>
+    <%= link_to "Mark Incomplete", edit_task_path(task.id, list_id: @list.id), id: "change-status" %>
   <% end %>
 </div>
