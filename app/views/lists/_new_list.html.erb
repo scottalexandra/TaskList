@@ -1,0 +1,8 @@
+<div class="new_list_form">
+  <h3>Create A New To Do List</h3>
+  <%= form_for :list, url: lists_path, method: :post do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <%= f.submit "Create List" %>
+  <% end %>  
+</div>

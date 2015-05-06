@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  root "lists#index"
+  resources :lists
+  
   namespace :api do
     namespace :v1 do
       resources :lists

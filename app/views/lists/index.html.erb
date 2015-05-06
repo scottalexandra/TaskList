@@ -1,0 +1,9 @@
+<div class="lists-list">
+  <h3>To Do Lists</h3>
+  <% @lists.each do |list| %>
+    <%= link_to list.title, list_path(list.id) %>
+  <% end %>
+</div>
+<div class="new-list">
+  <%= link_to "New List", new_list_path, id: "new_link", remote: true %>
+</div>
