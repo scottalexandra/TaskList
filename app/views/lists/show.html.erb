@@ -14,7 +14,7 @@
     </thead>
     <% @list.tasks.incomplete.each do |task| %>
     <tbody>
-      <tr class=<%= task.title %>>
+      <tr class="<%= task.title %>" %>
           <td><%= task.title %></td>
           <td><%= task.description %></td>
           <td><%= task.due %></td>
@@ -37,7 +37,7 @@
     </thead>
     <% @list.tasks.complete.each do |task| %>
     <tbody>
-      <tr class=<%= task.title %>>
+      <tr class="<%= task.title %>">
           <td><%= task.title %></td>
           <td><%= task.description %></td>
           <td><%= task.due %></td>

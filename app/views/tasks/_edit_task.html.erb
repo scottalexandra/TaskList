@@ -6,8 +6,8 @@
   <%= f.text_field :description %>
   <%= f.label "Due Date" %>
   <%= f.text_field :due %>
-  <%= f.label :complete %>
-  <%= f.check_box :status, {},"complete", "incomplete" %>
+  <%= f.label :completed %>
+  <%= f.check_box :completed, {}, true, false %>
   <%= f.hidden_field :list_id, value: @list_id %>
   <%= f.submit "Submit" %>
  <% end %>

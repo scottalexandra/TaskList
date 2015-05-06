@@ -33,7 +33,7 @@ RSpec.describe Api::V1::TasksController, type: :controller do
 
   describe "post create" do
     it "can create a task" do
-      post :create, task: { title: "newest task", status: "incomplete", due: "5/6/15" }
+      post :create, task: { title: "newest task", completed: false, due: "5/6/15" }
 
       expect(response).to have_http_status(:success)
       expect(Task.count).to eq(3)
@@ -54,7 +54,7 @@ RSpec.describe Api::V1::TasksController, type: :controller do
 
   describe "delete destroy" do
     it "can delete a task" do
-      post :create, task: { title: "another_task", status:"incomplete", due: "5/6/15" }
+      post :create, task: { title: "another_task", completed: false, due: "5/6/15" }
       new_task = JSON.parse(response.body)["task"]
 
       delete :destroy, id: new_task["id"]

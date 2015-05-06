@@ -5,6 +5,6 @@ class Task < ActiveRecord::Base
 
   validates :title, presence: true
 
-  scope :complete, -> { where(status: "complete") }
-  scope :incomplete, -> { where(status: "incomplete") }
+  scope :complete, -> { where(completed: true) }
+  scope :incomplete, -> { where(completed: false) }
 end
