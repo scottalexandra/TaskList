@@ -1,4 +1,4 @@
-class TasksController < ApplicationController
+  class TasksController < ApplicationController
   def new
     @list_id = params[:list_id]
   end
