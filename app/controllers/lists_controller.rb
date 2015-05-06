@@ -33,6 +33,11 @@ class ListsController < ApplicationController
     redirect_to lists_path
   end
 
+  def destroy
+    List.destroy(params[:id])
+    redirect_to :back
+  end
+
   private
 
   def list_params
