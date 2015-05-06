@@ -3,26 +3,9 @@
   <div class="new-list">
     <%= link_to "New List", new_list_path, id: "new_link", remote: true %>
   </div>
-  <%= link_to "View Archived Lists","#" , id:"show-archived" %>
-  <%= link_to "View Current Lists", "#", id:"show-cuurent" %>
-  <div id="archived-lists"class="hidden">
-    <h3>Archived Lists</h3>
-    <% @lists.archived.each do |list| %>
-      <table>
-        <thead>
-          <tr>
-            <th>Title</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><%= link_to list.title, list_path(list.id) %></td>
-            <td><%= link_to "remove", list_path(list.id), method: :delete %></td>
-          </tr>
-        </tbody>
-      </table>
-    <% end %>
-  </div>
+  <%= link_to "Archived Lists","#" , id:"show-archived" %> |
+  <%= link_to "Active Lists", "#", id:"show-current" %>
+
   <div id="current-lists">
     <h3>My Current Lists</h3>
     <% @lists.unarchived.each do |list| %>
@@ -39,6 +22,24 @@
         </tr>
       </tbody>
     </table>
+    <% end %>
+  </div>
+  <div id="archived-lists"class="hidden">
+    <h3>Archived Lists</h3>
+    <% @lists.archived.each do |list| %>
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= link_to list.title, list_path(list.id) %></td>
+            <td><%= link_to "remove", list_path(list.id), method: :delete %></td>
+          </tr>
+        </tbody>
+      </table>
     <% end %>
   </div>
 </div>

@@ -9,7 +9,7 @@ RSpec.feature "Tasks", type: :feature do
     list.tasks << [task1, task2]
   end
 
-  it "displays all of the tasks for a give list" do
+  it "displays all of the tasks for a given list" do
     visit root_path
     click_link_or_button list.title
     within(".incomplete-tasks") do
