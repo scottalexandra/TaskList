@@ -4,20 +4,47 @@
 </div>
 <div class="incomplete-tasks">
   <h4>Incomplete Tasks</h4>
-  <% @list.tasks.incomplete.each do |task| %>
-  <div class=<%= task.title %>>
-    <%= task.title %>
-    <%= task.due %>
-    <%= link_to "Mark Complete", edit_task_path(task.id, list_id: @list.id), id: "change-status" %>
-    <%= link_to "remove", task_path(task.id, list_id: @list.id), method: :delete, remote: true %>
-  </div>
-  <% end %>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Due Date</th>
+      </tr>
+    </thead>
+    <% @list.tasks.incomplete.each do |task| %>
+    <tbody>
+      <tr class=<%= task.title %>>
+          <td><%= task.title %></td>
+          <td><%= task.description %></td>
+          <td><%= task.due %></td>
+          <td><%= link_to "Mark Complete", edit_task_path(task.id, list_id: @list.id), id: "change-status" %></td>
+          <td><%= link_to "remove", task_path(task.id, list_id: @list.id), method: :delete, remote: true %></td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
 </div>
 <div class="complete-tasks">
   <h4>Complete Tasks</h4>
-  <% @list.tasks.complete.each do |task| %>
-    <%= task.title %>
-    <%= task.due %>
-    <%= link_to "Mark Incomplete", edit_task_path(task.id, list_id: @list.id), id: "change-status" %>
-  <% end %>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Due Date</th>
+      </tr>
+    </thead>
+    <% @list.tasks.complete.each do |task| %>
+    <tbody>
+      <tr class=<%= task.title %>>
+          <td><%= task.title %></td>
+          <td><%= task.description %></td>
+          <td><%= task.due %></td>
+          <td><%= link_to "Mark Incomplete", edit_task_path(task.id, list_id: @list.id), id: "change-status" %></td>
+          <td><%= link_to "remove", task_path(task.id, list_id: @list.id), method: :delete, remote: true %></td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
 </div>

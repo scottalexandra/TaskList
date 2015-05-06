@@ -62,6 +62,7 @@ RSpec.feature "Tasks", type: :feature do
     task3 = create(:task)
     visit list_path(list.id)
     within(".incomplete-tasks") do
+      save_and_open_page
       within(".clean") do
         click_link_or_button "Mark Complete"
       end
@@ -70,7 +71,7 @@ RSpec.feature "Tasks", type: :feature do
       find(:css, "#task_status[value='complete']").set(true)
       click_link_or_button "Submit"
     end
-    
+
     within(".complete-tasks") do
       expect(page).to have_content(task3.title)
     end
