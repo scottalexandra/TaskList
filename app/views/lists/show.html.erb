@@ -1,9 +1,16 @@
 <h3>Tasks for <%= @list.title %></h3>
+<div class="new-task">
+  <%= link_to "Create New Task", new_task_path(list_id: @list.id), id: "new-task", remote: true %>
+</div>
 <div class="incomplete-tasks">
   <h4>Incomplete Tasks</h4>
   <% @list.tasks.incomplete.each do |task| %>
+  <div class=<%= task.title %>>
     <%= task.title %>
     <%= task.due %>
+    <%= link_to "Mark Complete", task_path(task.id), method: :put %>
+    <%= link_to "remove", task_path(task.id, list_id: @list.id), method: :delete, remote: true %>
+  </div>
   <% end %>
 </div>
 <div class="complete-tasks">
