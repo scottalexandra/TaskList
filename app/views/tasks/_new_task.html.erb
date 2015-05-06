@@ -1,0 +1,11 @@
+<h3>Create New Task</h3>
+<div class="new_task_form">
+ <%= form_for :task, url: tasks_path, method: :post do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.label "Due Date" %>
+  <%= f.text_field :due %>
+  <%= f.hidden_field :list_id, value: @list_id %>
+  <%= f.submit "Create Task" %>
+ <% end %>
+</div>
