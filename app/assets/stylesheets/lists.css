@@ -2,6 +2,6 @@
   display: none;
 }
 
-.show {
-  display: block;
+.active {
+  color: magenta;
 }
