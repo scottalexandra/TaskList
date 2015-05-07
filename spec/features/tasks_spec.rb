@@ -42,37 +42,4 @@ RSpec.feature "Tasks", type: :feature do
       expect(page).to have_content("Task successfully created")
     end
   end
-
-  it "can remove a task" do
-    task3 = create(:task)
-
-    visit list_path(list.id)
-    within(".incomplete-tasks") do
-      within(".clean") do
-        click_link_or_button "remove"
-      end
-    end
-
-    within(".incomplete-tasks") do
-      expect(page).to_not have_content(task3.title)
-    end
-  end
-
-  it "can change the status of a task" do
-    task3 = create(:task)
-    visit list_path(list.id)
-    within(".incomplete-tasks") do
-      within(".clean") do
-        click_link_or_button "Mark Complete"
-      end
-    end
-    within(".edit_task_form") do
-      find(:css, "#task_completed[value='true']").set(true)
-      click_link_or_button "Submit"
-    end
-
-    within(".complete-tasks") do
-      expect(page).to have_content(task3.title)
-    end
-  end
 end
