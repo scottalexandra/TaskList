@@ -14,11 +14,11 @@
     </thead>
     <% @list.tasks.incomplete.each do |task| %>
     <tbody>
-      <tr class="<%= task.title %>" %>
+      <tr data-task-id="<%= task.id %>" data-list-id="<%= @list.id %>" class="<%=task.title %>">
           <td><%= task.title %></td>
           <td><%= task.description %></td>
           <td><%= task.due %></td>
-          <td><%= link_to "Mark Complete", edit_task_path(task.id, list_id: @list.id), id: "change-status" %></td>
+          <td><%= check_box_tag 'completed', task.completed %>Completed</td>
           <td><%= link_to "remove", task_path(task.id, list_id: @list.id), method: :delete, remote: true %></td>
       </tr>
     </tbody>
@@ -37,7 +37,7 @@
     </thead>
     <% @list.tasks.complete.each do |task| %>
     <tbody>
-      <tr class="<%= task.title %>">
+      <tr class=<%= task.title %>>
           <td><%= task.title %></td>
           <td><%= task.description %></td>
           <td><%= task.due %></td>

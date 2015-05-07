@@ -1,4 +1,4 @@
-<% if @task.complete %>
+<% if @task.completed %>
   $('<%= @task.title %>').appendTo('.complete-tasks');
 <% else %>
   $('<%= @task.title %>').appendTo('.incomplete-tasks');
