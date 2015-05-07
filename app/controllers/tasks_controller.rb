@@ -9,6 +9,7 @@ class TasksController < ApplicationController
     list = List.find(params[:task][:list_id])
     @task = list.tasks.new(task_params)
     if @task.save
+      SendEmail.email_user(params, @task)
       respond_to do |format|
         format.html { flash[:notice] = "Task successfully created"; redirect_to list_path(list.id) }
         format.js
