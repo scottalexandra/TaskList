@@ -28,7 +28,6 @@ class TasksController < ApplicationController
     params
     @task = Task.update(params[:id], task_params)
     respond_to do |format|
-      # format.html { redirect_to :back }
       format.js
     end
   end
