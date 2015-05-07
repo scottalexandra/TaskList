@@ -25,7 +25,6 @@ class TasksController < ApplicationController
   end
 
   def update
-    params
     @task = Task.update(params[:id], task_params)
     respond_to do |format|
       format.js
