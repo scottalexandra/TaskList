@@ -1,4 +1,6 @@
 class TasksController < ApplicationController
+  respond_to :json, :html
+
   def new
     @list_id = params[:list_id]
   end
@@ -23,16 +25,16 @@ class TasksController < ApplicationController
   end
 
   def update
-    Task.update(params[:id], task_params)
+    params
+    @task = Task.update(params[:id], task_params)
     respond_to do |format|
-      format.html { redirect_to list_path(params[:task][:list_id]) }
+      # format.html { redirect_to :back }
       format.js
     end
   end
 
   def destroy
-    @task = Task.find(params[:id])
-    @task.destroy
+    @task = Task.destroy(params[:id])
     respond_to do |format|
       format.html { redirect_to list_path(params[:list_id]) }
       format.js
