@@ -3,26 +3,26 @@ $(function(){
     var taskId = $(this).closest('tr').data('task-id');
     var listID = $(this).closest('tr').data('list-id');
     var taskElement = $(this).closest("tr");
-    if($(this).closest('div') == "<div class='incomplete-task'></div>" ) {
+    if(taskElement.closest("div").attr("class") == "incomplete-tasks") {
       $.ajax({
         url: '/tasks/' + taskId,
         type: 'PUT',
         data: { task: { completed: true } },
         success: function(data) {
-          taskElement.appendTo(".complete-tasks");
+          taskElement.appendTo(".complete-tasks table");
           console.log(data);
         }
       });
-    } else if($(this).closest('div') == '.complete-task') {
+    } else {
       $.ajax({
         url: '/tasks/' + taskId,
         type: 'PUT',
         data: { task: { completed: false } },
         success: function(data) {
-          taskElement.appendTo(".incomplete-tasks");
+          taskElement.appendTo(".incomplete-tasks table");
           console.log(data);
         }
       });
-    };
+    }
   });
 });
